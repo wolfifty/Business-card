@@ -101,9 +101,9 @@
   }
 
   .footer{
-    text-align:center; padding-top: 26px; font-size:12.5px; color: var(--text-dim);
+    text-align:center; padding-top: 26px; font-size:14.5px; color: var(--text-dim);
   }
-  .footer b{ color: var(--text); font-weight:600; }
+  .footer a{ color: var(--text); font-weight:700; text-decoration:none; }
 
   /* SUB PAGES */
   .back-btn{
@@ -170,7 +170,7 @@
       </div>
     </div>
 
-    <div class="footer">сделано <b>@Wolfifty</b></div>
+    <div class="footer">сделано <a href="https://t.me/Wolfifty" target="_blank" id="footer-link">@Wolfifty</a></div>
   </div>
 
   <!-- ABOUT -->
@@ -345,6 +345,11 @@
       setTimeout(()=>{ current.classList.add('hidden-screen'); }, 320);
     }else{
       alert('Пока не вижу подписку. Проверь, что подписался на канал, и попробуй ещё раз.');
+    }
+  });  document.getElementById('footer-link').addEventListener('click', (e)=>{
+    if(window.Telegram && Telegram.WebApp && Telegram.WebApp.openTelegramLink){
+      e.preventDefault();
+      Telegram.WebApp.openTelegramLink('https://t.me/Wolfifty');
     }
   });
 </script>
