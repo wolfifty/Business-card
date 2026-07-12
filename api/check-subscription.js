@@ -44,6 +44,9 @@ module.exports = async (req, res) => {
   const BOT_TOKEN = process.env.BOT_TOKEN;
   const CHANNEL_ID = process.env.CHANNEL_ID; // например: @your_channel или -1001234567890
 
+  console.log('CHANNEL_ID env:', CHANNEL_ID);
+  console.log('BOT_TOKEN present:', !!BOT_TOKEN, 'length:', BOT_TOKEN ? BOT_TOKEN.length : 0);
+
   if (!BOT_TOKEN || !CHANNEL_ID) {
     return res.status(500).json({ error: 'server_not_configured' });
   }
@@ -51,10 +54,12 @@ module.exports = async (req, res) => {
   const { initData } = req.body || {};
 
   if (!initData) {
+    console.log('no initData received');
     return res.status(400).json({ error: 'no_init_data' });
   }
 
   const isValid = verifyInitData(initData, BOT_TOKEN);
+  console.log('initData valid:', isValid);
   if (!isValid) {
     return res.status(401).json({ error: 'invalid_init_data' });
   }
@@ -67,12 +72,14 @@ module.exports = async (req, res) => {
 
   const user = JSON.parse(userJson);
   const userId = user.id;
+  console.log('checking userId:', userId, 'against channel:', CHANNEL_ID);
 
   try {
     const tgRes = await fetch(
       `https://api.telegram.org/bot${BOT_TOKEN}/getChatMember?chat_id=${encodeURIComponent(CHANNEL_ID)}&user_id=${userId}`
     );
     const tgData = await tgRes.json();
+    console.log('telegram API raw response:', JSON.stringify(tgData));
 
     if (!tgData.ok) {
       return res.status(200).json({ subscribed: false, reason: 'tg_error', detail: tgData.description });
@@ -80,9 +87,11 @@ module.exports = async (req, res) => {
 
     const status = tgData.result.status;
     const subscribed = ['creator', 'administrator', 'member'].includes(status);
+    console.log('member status:', status, 'subscribed:', subscribed);
 
     return res.status(200).json({ subscribed });
   } catch (e) {
+    console.log('request_failed error:', e.message);
     return res.status(500).json({ error: 'request_failed' });
   }
 };
