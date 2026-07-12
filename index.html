@@ -6,17 +6,18 @@
 <title>Визитка</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: var(--tg-theme-bg-color, #1C1B1F);
     --bg-elevated: var(--tg-theme-secondary-bg-color, #242327);
-    --text: var(--tg-theme-text-color, #F2EFE9);
-    --text-dim: var(--tg-theme-hint-color, #9C9A9F);
-    --accent: var(--tg-theme-button-color, #E8A33D);
-    --accent-text: var(--tg-theme-button-text-color, #1C1B1F);
-    --border: #38373C;
-    --card: #29282D;
+    --text: #FFFFFF;
+    --text-dim: rgba(255,255,255,0.72);
+    --accent: #BAF0C9;
+    --accent-text: #FFFFFF;
+    --icon-green: #5C8A44;
+    --border: rgba(255,255,255,0.22);
+    --card: rgba(186,240,201,0.16);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html,body{ height:100%; }
@@ -64,7 +65,7 @@
   .avatar img{ width:100%; height:100%; object-fit:cover; }
 
   .intro-text{
-    text-align:center; font-size:14.5px; line-height:1.6; color: rgba(242,239,233,0.85);
+    text-align:center; font-family:'Montserrat'; font-weight:500; font-size:14.5px; line-height:1.3; color: #FFFFFF;
     max-width: 320px; margin: 0 auto 30px;
     text-shadow: 0 1px 8px rgba(0,0,0,0.4);
   }
@@ -74,10 +75,10 @@
     margin-bottom: auto;
   }
   .nav-btn{
-    background: rgba(41,40,45,0.55);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(186,240,201,0.14);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.25);
     border-radius: 18px;
     padding: 20px 14px;
     display:flex; flex-direction:column; align-items:center; gap:10px;
@@ -85,15 +86,18 @@
     cursor:pointer;
     transition: transform .15s ease, background .15s ease;
   }
-  .nav-btn:active{ transform: scale(0.96); background: rgba(41,40,45,0.8); }
+  .nav-btn:active{ transform: scale(0.96); background: rgba(186,240,201,0.24); }
   .nav-btn .icon{
     width:40px; height:40px; border-radius:12px;
-    background: rgba(232,163,61,0.14);
+    background: #FFFFFF;
     display:flex; align-items:center; justify-content:center;
   }
-  .nav-btn .icon svg{ width:20px; height:20px; stroke: var(--accent); }
+  .nav-btn .icon svg{ width:20px; height:20px; stroke: var(--icon-green); }
   .nav-btn .label{
-    font-family:'Manrope'; font-weight:700; font-size:13.5px; line-height:1.3;
+    font-family:'Montserrat'; font-weight:700; font-size:13px; line-height:1.25;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 
   .footer{
