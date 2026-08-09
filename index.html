@@ -256,6 +256,24 @@
     <div class="back-btn" data-back>← Назад</div>
     <div class="page-title">Кейсы</div>
     <div class="page-body">
+      <p>Сделали Mini App для эксперта по волосам — и за 3 недели после запуска её доход вырос с 50 до 300 тысяч рублей в месяц, почти в 4 раза. Люди перестали растворяться в переписке и начали сами доходить до записи, изучая всё внутри приложения.</p>
+      <div class="cta" id="btn-case1-bot">Посмотреть бота с мини-аппом</div>
+
+      <img src="cases/case1-1.jpg" style="width:100%; border-radius:14px; margin-top:18px;">
+      <p style="font-size:13px; margin-top:8px; margin-bottom:18px;">Главный экран — фирменный стиль эксперта и быстрый переход к ключевым разделам.</p>
+
+      <img src="cases/case1-2.jpg" style="width:100%; border-radius:14px;">
+      <p style="font-size:13px; margin-top:8px; margin-bottom:18px;">Раздел "Обо мне" — опыт, регалии и путь эксперта в одном месте, без десятка сообщений в переписке.</p>
+
+      <img src="cases/case1-3.jpg" style="width:100%; border-radius:14px;">
+      <p style="font-size:13px; margin-top:8px; margin-bottom:18px;">Кейсы прямо из Instagram-профиля — доверие клиента растёт без необходимости листать сторонние соцсети.</p>
+
+      <img src="cases/case1-4.jpg" style="width:100%; border-radius:14px;">
+      <p style="font-size:13px; margin-top:8px; margin-bottom:18px;">Карточка онлайн-обучения — полная презентация программы прямо внутри Telegram.</p>
+
+      <img src="cases/case1-5.jpg" style="width:100%; border-radius:14px;">
+      <p style="font-size:13px; margin-top:8px; margin-bottom:18px;">Карточка офлайн-обучения — отдельное предложение для тех, кто хочет учиться очно.</p>
+
       <p>Эта визитка сама по себе пример работы: Telegram Mini App с проверкой подписки на канал, кастомным дизайном и интеграцией с ботом — собрана и запущена как демонстрация подхода к разработке.</p>
 
       <div class="card">
@@ -356,6 +374,18 @@
         Telegram.WebApp.openTelegramLink(materialsLink.href);
       }else{
         window.open(materialsLink.href, '_blank');
+      }
+    });
+  }
+
+  const btnCase1Bot = document.getElementById('btn-case1-bot');
+  if(btnCase1Bot){
+    btnCase1Bot.addEventListener('click', ()=>{
+      const url = 'https://t.me/Kudrrybot';
+      if(window.Telegram && Telegram.WebApp && Telegram.WebApp.openTelegramLink){
+        Telegram.WebApp.openTelegramLink(url);
+      }else{
+        window.open(url, '_blank');
       }
     });
   }
