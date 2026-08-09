@@ -205,36 +205,13 @@
   </div>
 
   <!-- CHANNEL -->
-  <div class="screen enter-right hidden-screen" id="screen-channel">
-    <div class="back-btn" data-back>← Назад</div>
-    <div class="page-title">Материалы по подписке</div>
-    <div class="page-body">
-      <p>Как Mini App и чат-боты усиливают автоворонку эксперта — если вы продаёте курсы, консультации или наставничество.</p>
-
-      <div class="card">
-        <b>Продажа без диалога с менеджером</b>
-        Mini App проводит клиента от первого касания до оплаты внутри Telegram — без перехода на сторонний сайт и без потери человека на середине пути. Каждый лишний клик снижает конверсию на 10-15%.
-      </div>
-
-      <div class="card">
-        <b>Квиз вместо холодного прогрева</b>
-        Вместо стандартного лид-магнита — интерактивный квиз с весовой логикой: клиент отвечает на вопросы, а бот подбирает продукт или тариф именно под его запрос. Прогрев и сегментация аудитории происходят одновременно.
-      </div>
-
-      <div class="card">
-        <b>Автоматическая дожимка оплаты</b>
-        Бот напоминает о брошенной корзине, предлагает рассрочку или альтернативный тариф — без вашего участия и без найма отдельного менеджера по продажам.
-      </div>
-
-      <div class="card">
-        <b>Личный кабинет клиента</b>
-        Доступ к урокам, прогрессу и материалам курса прямо в Telegram, который уже открыт у клиента каждый день — выше вовлечённость, чем в закрытом чате или на отдельной платформе.
-      </div>
-
-      <div class="card">
-        <b>Один инструмент вместо пяти</b>
-        Приём заявок, оплата, рассылки и личный кабинет — в одном месте, без склейки CRM, конструктора сайтов и отдельного платёжного сервиса.
-      </div>
+  <div class="screen enter-right hidden-screen" id="screen-channel" style="padding-left:0; padding-right:0;">
+    <div class="back-btn" data-back style="margin-left:20px;">← Назад</div>
+    <div style="position:relative; margin-top:14px;">
+      <img src="materials.jpg" alt="Материал" style="width:100%; display:block;">
+      <a href="https://t.me/wolfifty" id="materials-link-overlay"
+         style="position:absolute; left:9.3%; width:81.4%; top:97.999%; height:0.72%; display:block;"
+         target="_blank" rel="noopener"></a>
     </div>
   </div>
 
@@ -371,6 +348,17 @@
 
   const home = document.getElementById('screen-home');
   const buttons = document.querySelectorAll('.nav-btn:not(#btn-channel)');
+  const materialsLink = document.getElementById('materials-link-overlay');
+  if(materialsLink){
+    materialsLink.addEventListener('click', (e)=>{
+      e.preventDefault();
+      if(window.Telegram && Telegram.WebApp && Telegram.WebApp.openTelegramLink){
+        Telegram.WebApp.openTelegramLink(materialsLink.href);
+      }else{
+        window.open(materialsLink.href, '_blank');
+      }
+    });
+  }
   const backButtons = document.querySelectorAll('[data-back]');
   const btnChannel = document.getElementById('btn-channel');
 
